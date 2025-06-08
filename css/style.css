@@ -1,0 +1,52 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+h1 {
+  text-align: center;
+  margin: 2em;
+  text-transform: capitalize;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.7rem;
+}
+.form input {
+  padding: 0.3em 0.4em;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form .btn {
+  align-self: flex-start;
+  padding: 0.3em 0.5em;
+  font-size: 1rem;
+  border: 2px solid #444;
+  background-color: transparent;
+}
+table {
+  margin-top: 2rem;
+  width: 100%;
+}
+table thead {
+  border: 1px solid #000;
+}
+
+th {
+  text-align: left;
+}
