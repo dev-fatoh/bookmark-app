@@ -41,4 +41,4 @@ function clearInputs() {
   selectElement(".b-input").value = "";
   selectElement(".u-input").value = "";
 }
-document.querySelector(".btn").addEventListener("click", addBookMark);
+selectElement(".form .btn").addEventListener("click", addBookMark);
