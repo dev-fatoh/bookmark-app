@@ -31,7 +31,7 @@ function displayBookMark() {
             <td>${i}</td>
             <td>${marks[i].name}</td>
             <td><a href="${marks[i].url}">Visit</a></td>
-            <td><button>delete</button></td>
+            <td><button onclick="deleteBookMark(${i})">delete</button></td>
           </tr>`;
   }
   selectElement(".book-list").innerHTML = html;
@@ -42,3 +42,9 @@ function clearInputs() {
   selectElement(".u-input").value = "";
 }
 selectElement(".form .btn").addEventListener("click", addBookMark);
+
+function deleteBookMark(id) {
+  bookmarks.splice(id, 1);
+  displayBookMark();
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+}
