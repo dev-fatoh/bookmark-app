@@ -4,9 +4,6 @@ function selectElement(element) {
   return document.querySelector(element);
 }
 
-var validUrl;
-var validName;
-
 var bookmarks = [];
 // TODO : check if localestorage has a values or not
 if (localStorage.getItem("bookmarks")) {
@@ -18,7 +15,7 @@ function addBookMark() {
     name: selectElement(".b-input").value,
     url: selectElement(".u-input").value,
   };
-  if (validUrl && validName) {
+  if (checkUrl() && checkBookMarkName()) {
     bookmarks.push(bookmark);
 
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
@@ -52,14 +49,14 @@ function checkUrl() {
     selectElement(".u-input").style.border = "2px solid green";
 
     selectElement("p.message-url").style.display = "none";
-    validUrl = true;
+    return true;
   } else {
     // NOTE : change the border if the url is notvalid with red border
     selectElement(".u-input").style.border = "2px solid red";
     selectElement("p.message-url").innerHTML = "please this field is required";
     selectElement("p.message-url").style.display = "block";
 
-    validUrl = false;
+    return false;
   }
 }
 function checkBookMarkName() {
@@ -67,12 +64,12 @@ function checkBookMarkName() {
     selectElement(".b-input").style.border = "2px solid green";
 
     selectElement("p.message-name").style.display = "none";
-    validName = true;
+    return true;
   } else {
     selectElement(".b-input").style.border = "2px solid red";
     selectElement("p.message-name").innerHTML = "please this field is required";
     selectElement("p.message-name").style.display = "block";
-    validName = false;
+    return false;
   }
 }
 
