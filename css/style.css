@@ -10,7 +10,9 @@ body {
   width: 100vw;
   overflow: hidden;
 }
-
+a {
+  text-decoration: none;
+}
 .container {
   max-width: 80%;
   margin: 0 auto;
@@ -39,14 +41,29 @@ h1 {
   border: 2px solid #444;
   background-color: transparent;
 }
+p.message-name,
+p.message-url {
+  padding: 0.4em 0em;
+  font-size: 1.1rem;
+  font-weight: 200;
+  display: none;
+  color: red;
+}
 table {
   margin-top: 2rem;
   width: 100%;
+  border-collapse: collapse;
 }
-table thead {
-  border: 1px solid #000;
+table thead tr {
+  border-bottom: 1px solid #000;
+  font-size: 1.2rem;
+  padding: 1em;
+  margin-bottom: 1rem;
 }
 
 th {
   text-align: left;
+}
+table tbody tr td {
+  font-size: 1rem;
 }
