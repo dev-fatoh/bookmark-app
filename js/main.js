@@ -4,6 +4,9 @@ function selectElement(element) {
   return document.querySelector(element);
 }
 
+var validUrl;
+var validName;
+
 var bookmarks = [];
 // TODO : check if localestorage has a values or not
 if (localStorage.getItem("bookmarks")) {
@@ -15,7 +18,7 @@ function addBookMark() {
     name: selectElement(".b-input").value,
     url: selectElement(".u-input").value,
   };
-  if (checkUrl() && checkBookMarkName()) {
+  if (validUrl && validName) {
     bookmarks.push(bookmark);
 
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
@@ -25,18 +28,17 @@ function addBookMark() {
 }
 // TODO : function to display bookmarks in UI
 function displayBookMark() {
-  var marks = JSON.parse(localStorage.getItem("bookmarks"));
+  bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
   var html = "";
-  for (var i = 0; i <= marks.length - 1; i++) {
+  for (var i = 0; i <= bookmarks.length - 1; i++) {
     html += `
-         <tr>
-            <td>${i}</td>
-            <td>${marks[i].name}</td>
-            <td><a href="${marks[i].url}">Visit</a></td>
-            <td><button onclick="deleteBookMark(${i})">delete</button></td>
-          </tr>`;
+         <div class="bookmark">
+            <h4>Name : <span>${bookmarks[i].name}</span></h4>
+            <h4>visit : <a href="${bookmarks[i].url}">${bookmarks[i].url}</a></h4>
+            <button onclick="deleteBookMark(${i})"><i class="fa-solid fa-trash"></i></button>
+          </div>`;
   }
-  selectElement(".book-list").innerHTML = html;
+  selectElement(".bookmarks").innerHTML = html;
 }
 // TODO : url validation
 function checkUrl() {
@@ -50,14 +52,14 @@ function checkUrl() {
     selectElement(".u-input").style.border = "2px solid green";
 
     selectElement("p.message-url").style.display = "none";
-    return true;
+    validUrl = true;
   } else {
     // NOTE : change the border if the url is notvalid with red border
     selectElement(".u-input").style.border = "2px solid red";
     selectElement("p.message-url").innerHTML = "please this field is required";
     selectElement("p.message-url").style.display = "block";
 
-    return false;
+    validUrl = false;
   }
 }
 function checkBookMarkName() {
@@ -65,12 +67,12 @@ function checkBookMarkName() {
     selectElement(".b-input").style.border = "2px solid green";
 
     selectElement("p.message-name").style.display = "none";
-    return true;
+    validName = true;
   } else {
     selectElement(".b-input").style.border = "2px solid red";
     selectElement("p.message-name").innerHTML = "please this field is required";
     selectElement("p.message-name").style.display = "block";
-    return false;
+    validName = false;
   }
 }
 
@@ -83,13 +85,14 @@ function clearInputs() {
 // TODO : delete bookmark and update localStorage
 function deleteBookMark(id) {
   bookmarks.splice(id, 1);
-  displayBookMark();
+
   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  displayBookMark();
 }
 
 // TODO : events
 
-selectElement(".u-input").addEventListener("blur", checkUrl);
-selectElement(".b-input").addEventListener("blur", checkBookMarkName);
+selectElement(".u-input").addEventListener("change", checkUrl);
+selectElement(".b-input").addEventListener("change", checkBookMarkName);
 
 selectElement(".form .btn").addEventListener("click", addBookMark);

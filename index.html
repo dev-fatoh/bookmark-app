@@ -1,34 +1,29 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bookmark url</title>
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>bookmark app</h1>
-      <div class="form">
-        <input type="text" class="b-input" placeholder="name" />
-        <p class="message-name"></p>
-        <input type="text" class="u-input" placeholder="url" />
 
-        <p class="message-url"></p>
-        <button class="btn">click me</button>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Index</th>
-            <th>website Name</th>
-            <th>Visit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody class="book-list"></tbody>
-      </table>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bookmark url</title>
+  <link rel="stylesheet" href="./css/all.min.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>bookmark app</h1>
+    <p>bookmark your favorite site</p>
+    <div class="form">
+      <input type="text" class="b-input" placeholder="name" />
+      <p class="message-name"></p>
+      <input type="text" class="u-input" placeholder="url" />
+
+      <p class="message-url"></p>
+      <button class="btn">Add bookmark</button>
     </div>
-    <script src="./js/main.js"></script>
-  </body>
+    <div class="bookmarks"></div>
+  </div>
+  <script src="./js/main.js"></script>
+</body>
+
 </html>

@@ -5,29 +5,31 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-size: 14px;
   width: 100vw;
-  overflow: hidden;
 }
-a {
-  text-decoration: none;
-}
+
 .container {
-  max-width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
-h1 {
+
+h1,
+p {
   text-align: center;
-  margin: 2em;
+  margin: 1em;
   text-transform: capitalize;
 }
+
 .form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.7rem;
 }
+
 .form input {
   padding: 0.3em 0.4em;
   font-size: 1rem;
@@ -41,6 +43,7 @@ h1 {
   border: 2px solid #444;
   background-color: transparent;
 }
+
 p.message-name,
 p.message-url {
   padding: 0.4em 0em;
@@ -49,44 +52,58 @@ p.message-url {
   display: none;
   color: red;
 }
-table {
+
+.bookmarks {
   margin-top: 2rem;
-  width: 100%;
-  border-collapse: collapse;
+  display: grid;
+  grid-template-columns: 1f;
+  grid-template-rows: auto;
+  gap: 1.3rem;
 }
 
-th {
-  font-size: 1.3rem;
-  border-bottom: 2px solid grey;
+.bookmark {
+  position: relative;
+  background-color: #444;
+  padding: 1rem;
+  border-radius: 5px;
 }
-td {
-  font-size: 1rem;
+
+.bookmark>* {
+  margin-bottom: 1rem;
+
+  color: lightgrey;
 }
-th,
-td {
-  text-align: left;
-  padding: 0.4em 0.6em;
+
+.bookmark h4 span {
+  margin-left: 2rem;
 }
-tbody tr:nth-child(even) {
-  background-color: #f6f6f6;
+
+.bookmark h4 a {
+  color: lightgray;
+  padding: 1rem;
 }
-td button {
-  padding: 0.5em 0.8em;
-  font-size: 0.9rem;
-  background: red;
-  color: white;
-  border: none;
-  border-radius: 2px;
-  text-transform: capitalize;
+
+.bookmark button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  background-color: transparent;
   cursor: pointer;
 }
-td a {
-  padding: 0.5em 0.8em;
-  font-size: 0.9rem;
-  background: lightskyblue;
-  color: white;
-  border: none;
-  border-radius: 2px;
-  text-transform: capitalize;
-  cursor: pointer;
+
+@media (min-width: 480px) {
+  .container {
+    width: 80%;
+  }
+
+  .bookmarks {
+    grid-template-columns: 1fr 1fr;
+  }
 }
