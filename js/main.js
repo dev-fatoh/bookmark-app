@@ -12,10 +12,10 @@ if (localStorage.getItem("bookmarks")) {
 //TODO : create a function to add a bookmark in the array and also localeStorage
 function addBookMark() {
   var bookmark = {
-    name: selectElement(".b-input").value,
-    url: selectElement(".u-input").value,
+    name: selectElement(".name-input").value,
+    url: selectElement(".url-input").value,
   };
-  if (checkUrl() && checkBookMarkName()) {
+  if (checkBookMarkName() && checkUrl()) {
     bookmarks.push(bookmark);
 
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
@@ -42,32 +42,32 @@ function checkUrl() {
   var urlR =
     /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
   if (
-    selectElement(".u-input").value &&
-    urlR.test(selectElement(".u-input").value)
+    selectElement(".url-input").value.length &&
+    urlR.test(selectElement(".url-input").value)
   ) {
     // NOTE : change the border if the url is valid
-    selectElement(".u-input").style.border = "2px solid green";
+    selectElement(".url-input").classList.add("success");
 
     selectElement("p.message-url").style.display = "none";
     return true;
   } else {
     // NOTE : change the border if the url is notvalid with red border
-    selectElement(".u-input").style.border = "2px solid red";
-    selectElement("p.message-url").innerHTML = "please this field is required";
+    selectElement(".url-input").classList.add("error");
+    selectElement("p.message-url").innerHTML = "invalid input";
     selectElement("p.message-url").style.display = "block";
 
     return false;
   }
 }
 function checkBookMarkName() {
-  if (selectElement(".b-input").value) {
-    selectElement(".b-input").style.border = "2px solid green";
+  if (selectElement(".name-input").value.length > 0) {
+    selectElement(".name-input").classList.add("success");
 
     selectElement("p.message-name").style.display = "none";
     return true;
   } else {
-    selectElement(".b-input").style.border = "2px solid red";
-    selectElement("p.message-name").innerHTML = "please this field is required";
+    selectElement(".name-input").classList.add("error");
+    selectElement("p.message-name").innerHTML = "invalid input";
     selectElement("p.message-name").style.display = "block";
     return false;
   }
@@ -75,8 +75,11 @@ function checkBookMarkName() {
 
 // TODO : reset inputs
 function clearInputs() {
-  selectElement(".b-input").value = "";
-  selectElement(".u-input").value = "";
+  selectElement(".name-input").value = "";
+  selectElement(".url-input").value = "";
+
+  selectElement(".name-input").classList.remove("success");
+  selectElement(".url-input").classList.remove("success");
 }
 
 // TODO : delete bookmark and update localStorage
@@ -89,7 +92,7 @@ function deleteBookMark(id) {
 
 // TODO : events
 
-selectElement(".u-input").addEventListener("change", checkUrl);
-selectElement(".b-input").addEventListener("change", checkBookMarkName);
+selectElement(".url-input").addEventListener("change", checkUrl);
+selectElement(".name-input").addEventListener("change", checkBookMarkName);
 
 selectElement(".form .btn").addEventListener("click", addBookMark);

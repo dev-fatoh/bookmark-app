@@ -16,8 +16,8 @@ body {
   margin: 0 auto;
 }
 
-h1,
-p {
+.container>h1,
+.container>p {
   text-align: center;
   margin: 1em;
   text-transform: capitalize;
@@ -46,11 +46,19 @@ p {
 
 p.message-name,
 p.message-url {
-  padding: 0.4em 0em;
-  font-size: 1.1rem;
+  text-align: left;
+  font-size: 0.8rem;
   font-weight: 200;
   display: none;
   color: red;
+}
+
+.error {
+  border: 2px solid red;
+}
+
+.success {
+  border: 2px solid limegreen;
 }
 
 .bookmarks {
@@ -100,7 +108,7 @@ p.message-url {
 
 @media (min-width: 480px) {
   .container {
-    width: 80%;
+    width: 70%;
   }
 
   .bookmarks {
