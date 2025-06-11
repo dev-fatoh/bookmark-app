@@ -77,9 +77,6 @@ function checkBookMarkName() {
 function clearInputs() {
   selectElement(".name-input").value = "";
   selectElement(".url-input").value = "";
-
-  selectElement(".name-input").classList.remove("success");
-  selectElement(".url-input").classList.remove("success");
 }
 
 // TODO : delete bookmark and update localStorage
